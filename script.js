@@ -14,7 +14,7 @@ const myProfile = {
         "what do you do": "I create web applications and teach coding in my free time",
         "your skills": "JavaScript, React, Node.js, and API integrations",
         "hobbies": "Coding, chess, and sci-fi movies 🎬",
-        "favorite food": "Pizza! 🍕 (especially with extra cheese)"
+        "favorite food": "Pizza! � (especially with extra cheese)"
     }
 };
 
@@ -101,7 +101,7 @@ async function generateResponse(aichatBox) {
         aichatBox.querySelector(".ai-chat-area").innerHTML = apiResponse;
     } catch(error) {
         console.error(error);
-        aichatBox.querySelector(".ai-chat-area").innerHTML = "hi, i am piyush kumar a fun guy who loves to learn new things , likes anime and pizza, the question you you aked i am not yet trained for that , thanks for using me 😊 . try asking questions like (who are you), (what do you do),(your skills, (hobbies),(Favourote Food)"; 
+        aichatBox.querySelector(".ai-chat-area").innerHTML = "Hi , I am Piyush Kumar a fun guy who loves to learn new things , likes anime and pizza, the question you you aked i am not yet trained for that , thanks for using me 😊 . try asking questions like (who are you), (what do you do),(your skills, (hobbies),(Favourote Food)"; 
     } finally {
         chatContainer.scrollTo({top: chatContainer.scrollHeight, behavior: "smooth"});
         image.src = `img.svg`;
@@ -113,7 +113,14 @@ async function generateResponse(aichatBox) {
 // Event Listeners
 prompt.addEventListener("keydown", (e) => {
     if (e.key === "Enter" && !e.shiftKey) {
-        e.preventDefault(); // Prevent default form submission
+        e.preventDefault();
+        handleChatResponse(prompt.value);
+    }
+});
+
+// Submit button event listener
+document.querySelector(".submit").addEventListener("click", () => {
+    if (prompt.value.trim()) {
         handleChatResponse(prompt.value);
     }
 });
